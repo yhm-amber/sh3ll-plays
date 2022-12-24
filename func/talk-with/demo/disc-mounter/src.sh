@@ -1,5 +1,7 @@
 #! /usr/bin/env sh
 
+alias main=disc_mounter ;
+
 ask_user ()
 {
     : ask_user "msgs" "quest xx ?" "[y/n] (kk)" 'case "$ans" in y|n) echo "$ans" ; break ;; *) printf %s," " "${ans:-${ans_tmp:-kk}}" ;; esac'
@@ -236,3 +238,5 @@ $(uuid_fstab "$device" "$dir")
     :;
     
 } ;
+
+{main "$@")
