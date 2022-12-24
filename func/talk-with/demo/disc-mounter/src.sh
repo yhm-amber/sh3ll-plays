@@ -1,7 +1,8 @@
+#! /usr/bin/env sh
 
 ask_user ()
 {
-    
+    : ask_user "msgs" "quest xx ?" "[y/n] (kk)" 'case "$ans" in y|n) echo "$ans" ; break ;; *) printf %s," " "${ans:-${ans_tmp:-kk}}" ;; esac'
     
     local pre_desc="$1" && shift 1 &&
     local ask="$1" && shift 1 &&
@@ -27,7 +28,7 @@ ask_user ()
     echo "$pre_desc" &&
     
     while read -p "$ask $anser_set " -- ans ;
-    do eval "$cases" ; done &&
+    do ans_tmp="${ans:-$ans_tmp}" eval "$cases" ; done &&
     
     :;
     
